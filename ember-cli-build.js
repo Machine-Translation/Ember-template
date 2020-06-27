@@ -5,6 +5,33 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+
+    postcssOptions: {
+      compile: {
+        enabled: true,
+        plugins: [
+          {
+            module: require('postcss-import'), 
+            options: {
+              path: ['node_modules']
+            }
+          },
+          require('tailwindcss')('tailwind.config.js')
+        ]
+      },
+      filter: {
+        enabled: true,
+        plugins: [
+          require('postcss-nested'),
+          {
+            module: require('postcss-import'),
+            options: {
+              browsers: ['last 2 versions'] // this will override the config, but just for this plugin
+            }
+          }
+        ]
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
