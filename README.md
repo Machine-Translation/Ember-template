@@ -6,7 +6,7 @@ Is a template that Ember projects can be started from with all development and p
 
 * `git clone https://github.com/Machine-Translation/Ember-template`
 * `docker-compose up --build`
-* `docker-compose up run --service-ports web /bin/sh`
+* `docker-compose run --service-ports web /bin/sh`
 * `(Inside container) yarn install`
 * `exit` (get out of container)
 
